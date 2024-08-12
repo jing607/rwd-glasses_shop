@@ -1,0 +1,595 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0);
+
+@import "_reset";
+@import "_base";
+
+
+/* _mixins */
+@mixin pad {
+    @media(max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin pad-sm {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
+/* _utils 變數、字級、顏色 等 */
+
+$primary-color: #AA0601;
+$primary-color-dark: #650300;
+$primary-color-light: #FBF2F2;
+$dark-color: black;
+
+$font-family-en: "Roboto", sans-serif;
+$font-family-zh: "Noto Sans TC", sans-serif;
+
+.primary-color {
+    color: $primary-color;
+}
+.primary-color-dark {
+    color: $primary-color-dark;
+}
+
+.font-en {
+    font-family: $font-family-en;
+}
+
+.h1 {
+    font-size: 72px;
+}
+
+.h2 {
+    font-size: 64px;
+}
+
+.h3 {
+    font-size: 48px;
+}
+
+.fs-1 {
+    font-size: 36px;
+}
+
+.fs-2 {
+    font-size: 24px;
+}
+
+.fs-3 {
+    font-size: 20px;
+}
+
+.fs-4 {
+    font-size: 14px;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-black {
+    font-weight: 900;
+}
+
+.font-italy {
+    font-style: italic;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-block {
+    display: block;
+}
+
+.container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-right: 12px;
+    padding-left: 12px;
+
+    @include pad {
+        max-width: 720px;
+    }
+    @include mobile {
+        max-width: 372px;
+    }
+
+    /* 這個是給 header 用的 container */
+    &-sm-full {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding-right: 12px;
+        padding-left: 12px;
+
+        @include pad-sm {
+            padding: 0;
+        }
+    }
+}
+
+/* _layout */
+
+.header {
+    background: $primary-color;
+    padding: 12px 0;
+    @include pad-sm {
+        padding-bottom: 0;
+    }
+
+    &-content {
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+
+        @include pad-sm {
+            flex-direction: column;
+            align-items: start;
+        }
+    }
+    
+    .logo img {
+        width: 80px;
+
+        @include pad-sm {
+            margin-left: 15px;
+        }
+    } 
+
+    .nav {
+        @include pad-sm {
+            width: 100%;
+            font-size: 16px;
+            padding-top: 15px;
+        }
+        &-list {
+            gap: 64px;
+    
+            @include pad-sm {
+                gap: 0;
+                flex-wrap: wrap;
+            }
+    
+            a {
+                color: white;
+            }
+        }
+
+        &-item {
+            width: 80px;
+            
+            @include pad-sm {
+                width: 50%;
+                padding: 12px;
+                border: 1px solid white;
+            }
+        }
+    }
+
+}
+
+.footer {
+    background: $primary-color;
+    padding: 48px 0;
+    color: white;
+
+    a {
+        color: white;
+        &:hover {
+            color: $primary-color-light;
+        }
+    }
+
+    &-content {
+        justify-content: space-between;
+    }
+
+    .nav {
+        padding: 16px 0;
+        margin-bottom: 38.98px;
+        @include pad {
+            padding: 8px 0;
+        }
+        &-list {
+            gap: 48px;
+        }
+        @include pad-sm {
+            display: none;
+        }
+    }
+    &-contact {
+        flex-direction: column;
+        gap: 8px;
+        @include mobile {
+            font-size: 16px;
+            padding-bottom: 8px;
+        }
+        span {
+            margin-right: 20px;
+            @include mobile {
+                font-size: 24px;
+                margin-right: 10px;
+            }
+        }
+    }
+    .social-link {
+        gap: 32px;
+        @include pad-sm() {
+            gap: 8px;
+        }
+    }
+    .social-icon {
+        height: 48px;
+        @include pad {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        @include mobile {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    &-hr {
+        margin: 32px 0;
+        @include mobile {
+            margin: 16px 0;
+        }
+    }
+
+    .copyright {
+        justify-content: space-between;
+        @include mobile {
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+    .privacy {
+        gap: 48px;
+        @include mobile {
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+}
+
+/* _components */
+.btn {
+    background: $primary-color;
+    color: white;
+    &:hover {
+        background: $primary-color-dark;
+        color: $primary-color-light;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+}
+
+.btn-primary {
+    padding: 6px 12px;
+}
+
+.btn-secondary {
+    padding: 16px;
+    width: 416px;
+    @include pad {
+        width: 336px;
+    }
+    @include mobile {
+        width: 100%;
+    }
+}
+
+/* _pages */
+.banner {
+    background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-header.png?raw=true);
+    height: 787px;
+    background-size: cover;
+
+    @include pad {
+        background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-header-sm.png?raw=true);
+    }
+
+    &-content {
+        // color: $primary-color-dark;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+
+        @include pad-sm {
+            p {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            a {
+                margin: 8px;
+            }
+        }
+    }
+}
+
+.intro {
+    background-color: $primary-color-light;
+    padding: 80px 0;
+    text-align: center;
+    // color: $primary-color-dark;
+    @include mobile {
+        padding: 40px 0;
+    }
+
+    .title {
+        margin-bottom: 24px;
+        @include mobile {
+            font-size: 24px;
+        }
+    }
+
+    &-icon {
+        width: 83.83px;
+        padding-bottom: 8px;
+    }
+    &-list {
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+    &-card {
+        width: calc(25% - 18px);
+        @include pad {
+            width: calc(50% - 12px);
+        }
+        @include mobile {
+            width: 100%;
+        }
+        h3 {
+            padding: 8px 0;
+            @include mobile {
+                font-size: 24px;
+            }
+        }
+        p {
+            color: $dark-color;
+        }
+    }
+}
+
+.classic {
+    text-align: center;
+    padding: 80px 0;
+    @include mobile {
+        padding: 40px 0;
+    }
+    
+    .title {
+        // color: $primary-color-dark;
+        margin-bottom: 48px;
+        @include mobile {
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &-list {
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+    &-card {
+        width: calc(100% / 3 - 16px);
+        @include pad {
+            width: 100%;
+        }
+    }
+    &-img {
+        width: 416px;
+        padding-bottom: 8px;
+        &:hover {
+            filter: grayscale(100%);
+            opacity: .9;
+            transition: .5s ease-in-out;
+        }
+    }
+}
+
+.collab {
+    text-align: center;
+    background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/index-bg.png?raw=true);
+    background-size: cover;
+    padding: 80px 0;
+    color: white;
+    @include mobile {
+        background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/index-bg-sm.png?raw=true);
+        padding: 40px 0;
+    }
+    
+    .title {
+        margin-bottom: 48px;
+        @include mobile {
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+    }
+    
+    &-list {
+        @include pad {
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+    }
+    &-card {
+        width: 50%;
+        @include pad {
+            width: 100%;
+        }
+        a {
+            // color: $primary-color;
+            background: white;
+            padding: 8px 0;
+            width: 100%;
+            &:hover {
+                color: $primary-color-dark;
+                transition: .5s ease-in-out;
+            }
+        }
+    }
+    &-img-cover {
+        overflow: hidden;
+    }
+    &-img {
+        height: 240px;
+        background-size: cover;
+
+        &-double {
+            background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-section4-1.png?raw=true);
+            transform:scale(1,1);
+            transition: all .9s ease-out;
+            &:hover {
+                transform:scale(1.1,1.1);
+            }
+            @include mobile {
+                background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-section4-1-sm.png?raw=true);
+            }
+        }
+        &-youth {
+            background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-section4-2.png?raw=true);
+            transition: all .9s ease-out;
+            &:hover {
+                transform:scale(1.1,1.1);
+            }
+            @include mobile {
+                background-image: url(https://github.com/hexschool/2022-web-layout-training/blob/main/week3-4/home-section4-2-sm.png?raw=true);
+            }
+        }
+    }
+}
+
+.review {
+    text-align: center;
+    padding: 80px 0;
+    @include mobile {
+        padding: 40px 0;
+    }
+
+    .title {
+        margin-bottom: 48px;
+        @include mobile {
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &-list {
+        gap: 24px;
+        flex-wrap: wrap;
+        @include mobile {
+            gap: 16px;
+        }
+    }
+    &-card {
+        width: calc(25% - 18px);
+        height: 511px;
+        flex-direction: column;
+        text-align: left;
+        box-shadow: 0px 2px 6px #00000029;
+        border: 1px solid #DEE2E6;
+        border-radius: 4px;
+        opacity: 1;
+        @include pad {
+            width: calc(50% - 12px);
+        }
+        @include mobile {
+            width: 100%;
+        }
+
+        img {
+            height: 306px;
+            object-fit: cover;
+        }
+    }
+    &-card-body {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .name {
+            font-weight: 500;
+            padding-bottom: 8px;
+        }
+        .date {
+            color: #707070;
+            margin-top: auto;
+        }
+    }
+}
+
+.contact {
+    background: $primary-color-light;
+    padding: 80px 0;
+
+    .title {
+        text-align: center;
+        margin-bottom: 48px;
+        @include mobile {
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+    }
+    &-desc {
+        margin-bottom: 24px;
+        @include mobile {
+            font-size: 16px;
+        }
+    }
+
+    &-form {
+        max-width: 636px;
+        margin: 0 auto;
+        flex-direction: column;
+        @include pad {
+            max-width: 576px;
+        }
+    }
+    &-list {
+        flex-direction: column;
+        gap: 16px;
+
+        &-item {
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+    .textarea input {
+        height: 136px;
+    }
+    &-input {
+        height: 36px;
+        border: 1px solid $dark-color;
+        background: $primary-color-light;
+        &:focus {
+            outline-color: $primary-color;
+        }
+        &::placeholder {
+            font-family: $font-family-en;
+            opacity: .2;
+            color: $dark-color;
+            padding: 6px 12px;
+          }
+    }
+    &-btn {
+        justify-content: center;
+        margin-top: 48px;
+    }
+}
