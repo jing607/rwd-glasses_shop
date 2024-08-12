@@ -9,7 +9,7 @@ This repository contains various web layout practices focused on responsive web 
 
 ## GitHub Pages
 
-You can view the live version of the w3 RWD web layout practice [here]([URL](https://jing607.github.io/rwd-glasses_shop/w3/)).
+You can view the live version of the w3 RWD web layout practice [here](https://jing607.github.io/rwd-glasses_shop/w3/).
 
 ## Instructions
 
